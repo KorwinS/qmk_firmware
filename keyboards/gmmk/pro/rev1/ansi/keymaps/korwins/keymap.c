@@ -52,7 +52,7 @@ void eeconfig_init_user(void) {  // EEPROM is getting reset!
 
 
 // changes underglow based on current layer
-#define RBG_VAL 255
+#define RBG_VAL 120
 layer_state_t layer_state_set_user(layer_state_t state) {
   switch(biton32(state)) {
   case 1:
