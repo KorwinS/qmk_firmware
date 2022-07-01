@@ -52,29 +52,32 @@ void eeconfig_init_user(void) {  // EEPROM is getting reset!
 }
 
 
-// changes underglow based on current layer12
-#define RBG_VAL 130
+// changes underglow based on current layer
+// rgblight_sethsv_noeeprom(RGB_COLOR, RGB_SATURATION, RGB_BRIGHTNESS)
+#define RGB_SVAL 255 // Saturation Value
+#define RBG_BVAL 200 // Brightness Value
+
 layer_state_t layer_state_set_user(layer_state_t state) {
   switch(biton32(state)) {
   case 1:
-    // Yellow/Orange
-    rgblight_sethsv_noeeprom(35, 255, RBG_VAL);
+    // Yellow-y/Orange-y
+    rgblight_sethsv_noeeprom(35, RGB_SVAL, RBG_BVAL);
     break;
   case 2:
     // Magenta
-    rgblight_sethsv_noeeprom(201, 255, RBG_VAL);
+    rgblight_sethsv_noeeprom(201, RGB_SVAL, RBG_BVAL);
     break;
   case 3:
     // Red
-    rgblight_sethsv_noeeprom(0, 255, RBG_VAL);
+    rgblight_sethsv_noeeprom(0, RGB_SVAL, RBG_BVAL);
     break;
   case 4:
     // Violet
-    rgblight_sethsv_noeeprom(180, 255, RBG_VAL);
+    rgblight_sethsv_noeeprom(180, RGB_SVAL, RBG_BVAL);
     break;
   default:
     // Default colors
-    rgblight_sethsv(127, 150, RBG_VAL);
+    rgblight_sethsv(127, 150, 120); //set the default to a lower brightness and saturation
     break;
   }
   return state;
